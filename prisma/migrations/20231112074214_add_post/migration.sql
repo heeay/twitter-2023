@@ -1,0 +1,16 @@
+-- CreateTable
+CREATE TABLE "User" (
+    "userId" TEXT NOT NULL PRIMARY KEY,
+    "userName" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "undatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Tweet" (
+    "tweetNo" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "authorId" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "undatedAt" DATETIME NOT NULL,
+    CONSTRAINT "Tweet_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("userId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
