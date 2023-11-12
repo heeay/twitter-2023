@@ -25,13 +25,13 @@ model Tweet {
   authorId String 
   createdAt DateTime  @default(now())
   undatedAt DateTime  @updatedAt
-  //likes Like[]
+  likes Like[]
 }
 
-// model Like { 
-//   authorId   User   @relation(fields: [authorId], references: [userId])
-//   authorId String 
-//   refTweet Tweet @relation(fields: [tweetNo], references: [tweetNo])
-//   tweetNo Int
-//   @@id(fields : [ authorId, tweetNo])
-// }
+model Like { 
+  authorId   User   @relation(fields: [authorId], references: [userId])
+  authorId String 
+  refTweetNo Tweet @relation(fields: [tweetNo], references: [tweetNo])
+  tweetNo Int
+  @@id(fields : [ authorId, tweetNo])
+}
